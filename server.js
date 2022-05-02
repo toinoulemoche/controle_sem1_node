@@ -11,6 +11,9 @@ const server = http.createServer((req,res) => {
 		if(req.url === "/"){
 			res.write(fs.readFileSync(path.join(__dirname, 'public/pages/index.html'), 'utf-8'));
 		}
+		if(req.url === "/img"){
+			res.write(fs.readFileSync(path.join(__dirname, 'public/pages/affiche_image.html'), 'utf-8'));
+		}
 		else {
      	 		res.writeHead(404, {'content-type':'text/html'});
       			res.write('<h1>404 Page introuvable</h1>');
