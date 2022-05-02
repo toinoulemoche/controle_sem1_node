@@ -1,4 +1,6 @@
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
 const server = http.createServer((req,res) => {
 	try{
@@ -7,7 +9,7 @@ const server = http.createServer((req,res) => {
 			res.end();
 		}
 		if(req.url === "/"){
-			res.write('<h1> HELLO WORLD ANTOINE !</h1>');
+			res.write(fs.readFileSync(path.join(__dirname, 'public/pages/index.html'), 'utf-8'));
 		}
 		else {
      	 		res.writeHead(404, {'content-type':'text/html'});
