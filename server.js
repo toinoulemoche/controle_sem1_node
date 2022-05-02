@@ -6,17 +6,16 @@ const server = http.createServer((req,res) => {
 	try{
 		if(req.method != "GET"){
 			res.write('<h1> La méthode ". req.method . "n\'est pas autorisée!</h1>');
-			res.end();
+			res.end()
 		}
-		if(req.url === "/"){
+		else if(req.url === "/"){
 			res.write(fs.readFileSync(path.join(__dirname, 'public/pages/index.html'), 'utf-8'));
 		}
-		if(req.url === "/img"){
+		else if(req.url === "/img"){
 			res.write(fs.readFileSync(path.join(__dirname, 'public/pages/affiche_image.html'), 'utf-8'));
 		}
 		else {
-     	 		res.writeHead(404, {'content-type':'text/html'});
-      			res.write('<h1>404 Page introuvable</h1>');
+     	 		res.write(fs.readFileSync(path.join(__dirname, 'public/pages/404.html'), 'utf-8'));
       			res.end()
     		}
 	} catch (err) {
